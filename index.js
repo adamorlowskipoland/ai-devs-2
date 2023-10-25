@@ -1,10 +1,9 @@
-import { TaskService } from "./service/task-service.js";
 import { TaskAutomation } from "./task-automation.js";
 
-const taskAutomation = new TaskAutomation(new TaskService("helloapi"));
+const taskAutomation = new TaskAutomation("helloapi");
 
 console.log("running");
 console.log("calling");
-taskAutomation.solveTask("helloapi").then((res) => {
+taskAutomation.solveTask().then((res) => {
   console.log('%c Line: finished, msg: : ', 'color: skyblue', res);
 });

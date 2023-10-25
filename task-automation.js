@@ -1,15 +1,15 @@
 import { taskNameToHandlerMap } from "./helpers/task-handlers.js";
+import { TaskService } from "./service/task-service.js";
 
-export class TaskAutomation {
-    constructor(taskService) {
-        this.taskService = taskService;
+export class TaskAutomation extends TaskService {
+    constructor(taskName) {
+        super(taskName);
     }
 
-    async solveTask(taskName) {
-        await this.taskService.getTaskToken(taskName);
-        const task = await this.taskService.getTask();
+    async solveTask(taskName = this.taskName) {
+        await this.getTaskToken(taskName);
+        const task = await this.getTask();
         const answer = taskNameToHandlerMap[taskName](task);
-        console.log('%c Line: answer, msg: : ', 'color: skyblue', answer);
-        return await this.taskService.answerTask(answer);
+        return await this.answerTask(answer);
     }
 }
