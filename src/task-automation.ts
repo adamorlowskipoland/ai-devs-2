@@ -9,7 +9,7 @@ export class TaskAutomation extends TaskService {
   async solveTask(taskName = this.taskName) {
     await this.getTaskToken(taskName);
     const task = await this.getTask();
-    const answer = taskNameToHandlerMap[taskName](task);
+    const answer = await taskNameToHandlerMap[taskName](task);
     return await this.answerTask(answer);
   }
 }

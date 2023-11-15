@@ -7,4 +7,4 @@ export interface ApiKeyPayload {
   apiKey: string;
 }
 
-export type Answer = string | string[];
+export type Answer = string | (string | number)[];
